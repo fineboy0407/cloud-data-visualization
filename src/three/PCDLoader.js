@@ -122,7 +122,7 @@ class PCDLoader extends Loader {
 
 			// remove comments
 
-			PCDheader.str = PCDheader.str.replace( /\#.*/gi, '' );
+			PCDheader.str = PCDheader.str.replace( /\\#.*/gi, '' );
 
 			// parse
 
@@ -400,7 +400,7 @@ class PCDLoader extends Loader {
 
 		const mesh = new Points( geometry, material );
 		let name = url.split( '' ).reverse().join( '' );
-		name = /([^\/]*)/.exec( name );
+		name = /([^\\/]*)/.exec( name );
 		name = name[ 1 ].split( '' ).reverse().join( '' );
 		mesh.name = name;
 

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { Canvas, extend, useFrame, useThree } from 'react-three-fiber'
 import { PCDLoader } from "../three/PCDLoader";
@@ -42,7 +43,10 @@ const CameraControls = () => {
 };
 
 const CV = ({
-    data = null
+    data = null,
+    camPosition = [0, 0, 40],
+    camControl = true,
+    zoom = 100
 }) => {
     const scale = 1;
     const range = 120;
@@ -58,24 +62,23 @@ const CV = ({
                 bottom: -range,
                 near: -range,
                 far: 10000,
-                zoom: 100,
+                zoom: zoom,
                 up: [0, 0, 1],
-                position: [0, 0, 40]
+                position: camPosition
             }}>
             {
                 data ? <primitive object={data} /> : null
             }
-            <CameraControls />
+            {camControl && <CameraControls />}
         </Canvas>
     )
 }
 
 const Lidar = (props) => {
-    const { path } = props
-    const { data } = useLoadPCD(path)
+    const { data } = useLoadPCD(props.path)
     return (
         <>
-            <CV data={data} />
+            <CV data={data} camPosition={props.camPosition} camControl={props.camControl} zoom={props.zoom}/>
         </>
     )
 }
