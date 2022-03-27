@@ -1,8 +1,8 @@
 import React from "react";
-import { darkTheme, lightTheme } from "./theme";
+import { darkTheme, lightTheme } from "./components/theme";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import Dashboard from "./Dashboard";
-import { AppContext } from "./AppContext";
+import { AppContext } from "./components/AppContext";
 
 function App() {
   const [light, setLight] = React.useState(true);

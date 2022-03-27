@@ -15,10 +15,10 @@ import Paper from '@mui/material/Paper';
 import Link from '@mui/material/Link';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import { mainListItems, secondaryListItems } from './listitems';
-import { AppContext } from './AppContext';
+import { mainListItems, secondaryListItems } from './components/listitems';
+import { AppContext } from './components/AppContext';
 import { Brightness5 } from '@mui/icons-material';
-import Lidar from './Lidar';
+import Lidar from './components/Lidar';
 
 function Copyright(props) {
   return (
@@ -166,7 +166,7 @@ function DashboardContent() {
                     height: 240,
                   }}
                 >
-                  <Lidar />
+                  <Lidar path={'/pcd/office1.pcd'}/>
                 </Paper>
               </Grid>
               {/* Recent Deposits */}
